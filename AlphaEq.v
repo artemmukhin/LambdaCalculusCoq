@@ -102,3 +102,23 @@ Proof.
           ** apply CAS_symm. auto. auto.
       + subst. assert (B0 ~a~ A). auto. apply alpha_eq_Lam. auto.
 Qed.
+
+Lemma alpha_eq_trans: forall A B C, A ~a~ B -> B ~a~ C -> A ~a~ C.
+Proof.
+  intro C.
+  induction C.
+  - intros. inversion H.
+    + exfalso. inversion H1.
+    + subst. auto.
+  - intros. inversion H.
+    + exfalso. inversion H1.
+    + subst. inversion H0.
+      * exfalso. inversion H1.
+      * subst.
+        assert (C1 ~a~ B). { specialize (IHC1 B0 B). auto. }
+        assert (C2 ~a~ D0). { specialize (IHC2 D D0). auto. }
+        apply alpha_eq_App. auto. auto.
+  - intros. inversion H.
+    + admit.
+    + subst. admit.
+Admitted.
