@@ -69,4 +69,8 @@ Proof.
     - admit.
 Admitted.
 
-    
+Lemma CAS_symm_var : forall A B x y, not y ?? A -> CAS A x y B -> not x ?? B.
+Proof.
+  intros.
+  admit.
+Admitted.
