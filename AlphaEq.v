@@ -28,6 +28,8 @@ Proof.
   - subst. constructor.
     + auto.
     + assert (CAS B y x A). { apply CAS_symm. auto. auto. }
+      remember (CAS_symm_var A B x y). auto.
+      (*
       inversion H0.
       ++ subst. apply FV_Var_other1. auto.
       ++ subst. assert (x <> z). {
@@ -41,8 +43,9 @@ Proof.
       ++ admit.
       ++ admit.
       ++ admit.
+    *)
     + apply CAS_symm. auto. auto.
-Admitted.
+Qed.
 
 Lemma alpha_conv_trans : forall A B C x y z, Lam x A ~a_conv~> Lam y B -> Lam y B ~a_conv~> Lam z C -> Lam x A ~a_conv~> Lam z C.
 Proof.
@@ -92,6 +95,10 @@ Proof.
     - intros. inversion H.
       + subst. inversion H0.
         * subst. auto.
-        * subst. admit.
-      + subst. admit.
-Admitted.
+        * subst. constructor.
+          constructor.
+          ** auto.
+          ** remember (CAS_symm_var A A' i y). auto.
+          ** apply CAS_symm. auto. auto.
+      + subst. assert (B0 ~a~ A). auto. apply alpha_eq_Lam. auto.
+Qed.
