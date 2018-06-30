@@ -22,6 +22,12 @@ Proof.
   admit.
 Admitted.
 
+Lemma CAS_refl: forall A x, CAS A x x A.
+Proof.
+  intros.
+  admit.
+Admitted.
+
 Lemma CAS_other: forall A x y, not x ?? A -> not y ?? A -> CAS A x y A.
 Proof.
   intros.
@@ -72,5 +78,20 @@ Admitted.
 Lemma CAS_symm_var : forall A B x y, not y ?? A -> CAS A x y B -> not x ?? B.
 Proof.
   intros.
+  admit.
+Admitted.
+
+Lemma CAS_deterministic : forall A B C x y, CAS A x y B -> CAS A x y C -> B = C.
+Proof.
+  admit.
+Admitted.
+
+Lemma CAS_subst_other : forall A B x y z, x <> z -> CAS A x y B -> not z ?? B -> not z ?? A.
+Proof.
+  admit.
+Admitted.
+
+Lemma CAS_comp : forall A B C x y z, CAS A x y B -> CAS B y z C -> CAS A x z C.
+Proof.
   admit.
 Admitted.
