@@ -30,21 +30,6 @@ Proof.
     + auto.
     + assert (CAS B y x A). { apply CAS_symm. auto. auto. }
       remember (CAS_symm_var A B x y). auto.
-      (*
-      inversion H0.
-      ++ subst. apply FV_Var_other1. auto.
-      ++ subst. assert (x <> z). {
-          inversion H6. subst.
-          - exfalso. auto.
-          - subst. auto.
-         }
-         apply FV_Var_other1. auto.
-      ++ subst. admit.
-      ++ admit.
-      ++ admit.
-      ++ admit.
-      ++ admit.
-    *)
     + apply CAS_symm. auto. auto.
 Qed.
 
@@ -205,7 +190,7 @@ Proof.
         -- inversion H0.
           ++  subst. inversion H2.
               +++ subst. exfalso. auto.
-              +++ subst. admit.
+              +++ subst. inversion H1. admit.
           ++  subst. exfalso. auto.
 
     + subst. exfalso. inversion H0. inversion H3.
